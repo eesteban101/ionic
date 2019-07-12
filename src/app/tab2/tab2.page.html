@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Journals
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Your navbar is here -->
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-cogs fa-spin"></i>
+      <span style="margin-left:10px">{{name}}</span>
+    </a>
+  </nav>
+  
+  <div class="container-fluid" id="no-padding">
+    <div class="row">
+      <div class="col-12">
+        <div class="image-back">
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="col-6">
+        <!-- ng for goes here -->
+        <!-- this is your list of blogs being printed it updates because of two way data binding -->
+        <div *ngFor="let blog of blogs">
+          <h1>{{blog.title}}</h1>
+          <p>{{blog.content}}</p>
+        </div>
+      </div>
+  
+      <div class="col-6" >
+        <h1 class="center">Add New Blog</h1>
+        <!-- form goes here -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" id="form">
+          <div class="form-group">
+            <label for="exampleInputPassword1">Title</label>
+            <input type="text" class="form-control" formControlName="title" name="title" id="title-in">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Content</label>
+            <textarea type="text" class="form-control" formControlName="content" name="content" id="content-in"> </textarea>
+          </div>
+  
+          <button type="submit" class="btn btn-primary"> Submit </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
